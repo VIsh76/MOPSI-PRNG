@@ -3,13 +3,13 @@
 
 int main(void)
 {
-    int seed = 3;
+    int seed = 2;
     int i;
-    LCG lcg1(5,2,12);
-    for (i = 0; i < 10; i++)
+    LCG lcg1(3,0,19);
+    for (i = 0; i < 20; i++)
     {
-        printf("%d ", seed);
-        seed = lcg1.run(seed);
+       seed=lcg1.run(seed);
+        cout << "bonne méthode : "<< seed <<endl;
     }
 
     printf("...\n");

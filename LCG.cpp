@@ -11,8 +11,7 @@ int jsw_lcg(int seed)
 }
 
 int LCG::run(int seed){
-//    seed = coeff * (seed % Q) - R * (seed / Q);
-    seed = (coeff*seed+reste)%mod;
+    seed= coeff * (seed % Q) - R * (seed / Q);
     if (seed < 0)
     {
         seed += mod;
@@ -28,6 +27,6 @@ vector<int> LCG::run_n(int seed, int n) {
     return output;
 };
 
-float LCG::test_uniforme(int nb_test, int seed=0){
-    vector<int> output = run_n(seed,nb_test);
-}
+//float LCG::test_uniforme(int nb_test, int seed=0){
+//    vector<int> output = run_n(seed,nb_test);
+//}
