@@ -1,0 +1,25 @@
+Propriétés des bons MCGs : 
+On rappelle : 
+- les bonnes propriétés d'un générateur de nombres pseudo-aléatoires sont, d'une manière générale : 
+  - une distribution la plus uniforme possible sur l'ensemble des sorties possibles
+  - des réalisations les plus indépendantes possibles
+- un LCG, ou générateur de congruences linéaire en bon français, se définit par la donnée de trois entiers m>0, a>0, et c>=0. Un MCG est un LCG pour lequel c=0.
+On a alors la relation : sn = a*s(n-1) mod m, et un = sn/m
+
+Quelques propriétés en vrac : 
+- ce sont les premiers PRNGs pour lesquels une théorie mathématique a été construite
+- ils sont rapides (exécution), rapides à implémenter, et sont très répandus (ex : rand())
+- précision : la formation des points en "lattice" (en grillage, en treillis, en réseau), c'est spécifique aux LCGs (et MCGs)
+- théorème de Marsaglia pour la faiblesse en grande dimension
+
+Faiblesses : 
+- dans les implémentations classiques (m=2^32), ils ont une petite période
+- en dimension élevée : mauvaise répartition (mauvaise uniformité) : dans[0,1]^d, on ne peut générer que m points distincts : peu !!!
+- les bits d'ordre plus faible ont des périodes plus courtes (~ordre d'un octet : rang du dernier bit non nul : 0000101 : ordre=3)
+
+Choix de m,a : 
+- si m = 2^M, la période maximale est 2^(M-2), atteinte pour toute seed impaire si a mod 3 ≡ 3 ou 5
+- la période m-1 est réalisable seulement si m est premier. Dans ce cas, elle divise m-1 et est égale à m-1 ssi a est une "primitive root", aka (a≠0)&&(a^((m-1)/p) n'est pas congru à 1 mod m pour tout p facteur premier de m-1)
+
+
+Mieux que les LCGs : SFMT
