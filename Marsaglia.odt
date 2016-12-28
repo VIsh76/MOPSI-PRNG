@@ -1,0 +1,10 @@
+Théorème de Marsaglia : 
+
+Enoncé : Soit d un entier strictement positif.
+         Soient alpha,...alpha(d-1) d entiers vérifiant : 
+              alpha0 + ... + alpha(d-1)*a^(d-1)  ≡ 0[m]        (1)
+         Alors : tous les points de la forme (un,...,u(n+d-1)) (c'est à dire tous les points de R^d ???) appartiennent à l'ensemble d'hyperplans parallèles définis par : 
+              alpha0 + ... + alpha(d-1)*x(d-1) = 0, ±1, ±2, ...
+         De plus, au plus |alpha0| + ... + |alpha(d-1)| de ces hyperplans intersectent ]0,1[^d, et il y a toujours un d-uplet (alpha)i tel que tous ces points appartiennent à moins de (d!m)^(1/d) hyperplans.
+
+Preuve (:/) : 
