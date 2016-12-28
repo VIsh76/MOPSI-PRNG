@@ -3,8 +3,31 @@ Théorème de Marsaglia :
 Enoncé : Soit d un entier strictement positif.
          Soient alpha,...alpha(d-1) d entiers vérifiant : 
               alpha0 + ... + alpha(d-1)*a^(d-1)  ≡ 0[m]        (1)
-         Alors : tous les points de la forme (un,...,u(n+d-1)) (c'est à dire tous les points de R^d ???) appartiennent à l'ensemble d'hyperplans parallèles définis par : 
-              alpha0 + ... + alpha(d-1)*x(d-1) = 0, ±1, ±2, ...
+         Alors : tous les points de la forme (un,...,u(n+d-1)) (où chaque ui est un réel, issu du PRNG)) appartiennent à l'ensemble d'hyperplans parallèles définis par : 
+              alpha0 + ... + alpha(d-1)*x(d-1) = 0, ±1, ±2, ...  (2)
          De plus, au plus |alpha0| + ... + |alpha(d-1)| de ces hyperplans intersectent ]0,1[^d, et il y a toujours un d-uplet (alpha)i tel que tous ces points appartiennent à moins de (d!m)^(1/d) hyperplans.
 
-Preuve (:/) : 
+Preuve (:/) : On rappelle les relations : sn = a*s(n-1) mod m
+                                          un=sn/m
+					  u(n+1)=s(n+1)/m = (a*sn mod m)/m = (a*m*un mod m)/m    NB : un n'est pas entier, et a*un non plus à priori
+                                          m*u(n+1) = a*m*un mod m = a*(a*m*u(n-1) mod m) mod m
+                                          Si on pouvait montrer que u(n+1) = a*un, on aurait la première égalité.		
+              On part de sn : s(n+1) = a*sn mod m = a*sn - [(a*sn)/m]*m
+                              u(n+1) = s(n+1)/m = a*un - [a*un]
+                              s(n+k) = a*s(n+k-1) - [(a*s(n+k-1))/m]*m  = par réc sn*a^k - [(sn*a^k)/m]*m
+             Récurrence : H(i) : "u(n+i) = un*a^i - [a^i * un]"
+             Rang 1 : Fait.
+             Supposons H(i). Alors : 
+             u(n+i+1) = s(n+i+1)/m = (a*s(n+i) mod m)/m = (a*s(n+i) - [a*s(n+i)/m]*m)/m = un*a^(i+1) - [un*a^(i+1)]
+             H(i+1) est vraie. D'après le principe de récurrence, H(i) est vraie pour tout i. 
+                              u(n+k) = un*a^k - [a^k * un]
+                              Alors : alpha0 + ... + alpha(d-1)*u(n+d-1) = sn * l- (une somme d'entiers) = un entier
+                               
+               (2) est bien vérifiée.
+               Pour le nombre maximum d'hyperplans qui intersectent ]0,1[^d, il suffit de dénombrer le nombre d'entiers pouvant être égaux à l'équation de l'hyperplan (avec des xi compris entre 0 et 1). L'entier maximal pouvant être atteint est la sommme des alphai positifs, et le plus petit est la somme des alphai négatifs. La somme de ces deux valeurs donnent bien (par partie positive et négative) la somme des valeurs absolue (aucune de ces valeurs extrêmes n'est atteinte, les xi étant compris strictement entre 0 et 1).
+            
+Pour le dernier point, je propose une démonstration de type pouf pouf magie.
+Nan, en réalité c'est grâce au merveilleux théorème 449 : soient f0,...,f(d-1) d formes linéaires, s'écrivant : fi = ki,0*ti + ... + ki,(d-1)*ti.
+Si il existe des ki,j  dont le déterminant est non nul, alors il existe des entiers ti tels que |f0| + ... + |f(d-1)| <= (d!*déterminant)^(1/n).
+Je pense qu'on se sert du théorème de Riesz pour écrire les alphai comme des formes linéaires de R dans R : alphai(x)=alphai*x.
+Le reste, aucune idée.
