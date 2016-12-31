@@ -1,0 +1,31 @@
+Rejection with cheese : 
+La méthode du rejet est utilisée quand on veut simuler une variable aléatoire X de densité f.
+Hypothèses : - on connaît une densité g telle que f/g soit borné par une constante c : f <= cg
+             - et bien sûr, il faut savoir simuler g (on note Y une variable aléatoire de densité g)
+
+Méthode simple : 1°) a) on tire Y (on fait une réalisation de Y)
+              b) on tire U où U suit une loi uniforme sur (0,1)
+          2°) Si U > f(Y)/(cg(Y)), on recommence 1°)
+          3°) Si on a passé le test de 2°) avec succès, on accepte Y comme réalisation de X.
+
+Ainsi, à chaque fois qu'on veut simuler X, on simule Y et U jusqu'à ce que l'inégalité de 2°) ne soit plus vraie.
+
+
+Remarques : On a intérêt à choisir c le plus petit possible (le plus proche de 1) pour ne pas boucler trop de fois.
+            Le tirage de la loi g doit être facile, l'évaluation de f/g aussi.
+            Notons qu'on connaît f(Y) parce qu'on connaît f : différence entre connaître la fonction de densité et savoir la simuler (genre simuler un jet de dés ≠ savoir que chaque sortie est 1/6, la preuve l'être humain simulerait ça assez mal).
+            => le choix de g est évidemment la première étape d'un rejet bien mené !
+
+
+
+Généralisation : le principe de la généralisation est de chercher à encadrer f par deux fonctions à valeurs dans (0,1) facilement évaluables h1,h2 : 
+                 h1 <= f <= h2 (toujours avec f <= cg)
+                 
+                 Avec ces deux hypothèses : 
+                 1°)On tire Y selon g, U selon U(0,1) indépendamment de Y et on pose Z=Ucg(Y)
+                 2°)Si Z>h1(Y) ou si Z<=h1(Y) et h2(Y)>Z et f(Y)>Z, on accepte Y comme réalisation de f. Sinon, on recommence.
+                    (On rejette si Z>f(Y), c'est à dire si Z >= h2(Y) ou si f(Y)<Z<=h2(Y)
+                 Avantage : ça permet de faire moins d'évaluations de f.
+                 A mon avis, problème sur la page Wiki. Je dirai plutôt ; 
+                 Si Z<=h1(y), on accepte ; sinon, si Z>h2(Y), on rejette ; sinon, on accepte ssi Z<=f(Y).
+                 L'ordre des étapes est important, c'est ce qui permet de diminuer le nombre d'évaluations de f.
