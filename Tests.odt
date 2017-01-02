@@ -39,6 +39,13 @@ Test graphique : on tire a réalisations sur [0,a]^2 (visiblement), et on observ
 Et s'il en faut plus, en voici une vingtaine d'autres : 
 https://en.wikipedia.org/wiki/Diehard_tests
 
+Minimum distance test : il a l'air facile à implémenter : on place 8000 points aléatoirement sur un carré de côté 10000, et on trouve les deux points les plus proches l'un de l'autre. Le carré de la distance doit suivre une loi exponentielle.
+Ensuite on peut coupler ça à un test statistique pour voir si ce carré de distance suit une loi exponentielle ?
+A discuter (la page wiki apporte plus de détails sur comment faire)
+
+Birthday spacing : apparemment, si on choisit des points aléatoirement sur un grand intervalle, d'après le "birthday paradox", la distance entre deux points consécutifs suit (asymptotiquement) une loi exponentielle.
+(A partir de 23 personnes, la proba que deux au moins aient la même date d'anniversaire est supérieure à 1/2)
+
 
 Site pratique : http://www.apprendre-en-ligne.net/random/spectre.html
 On peut tester des valeurs de m,a,c avec un PRNG déjà codé prêt à l'emploi.
