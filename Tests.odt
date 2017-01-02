@@ -14,6 +14,8 @@ L'intervalle ]si;sj[ le plus long "obtenable" sans toucher U est ]1,m-1[ ce qui 
 Pour un MCG : S={1,...,m-1} et U={1/m,...,1-1/m} : card(U)=m-1, donc r=1/(m-1) ; le max vaut toujours m-1 = 1/r
 
 J'imagine que la gap value est l'inverse du max en question, et que l'article a confondu LCG et MCG, ou alors je me suis planté...
+NB NB !!! Du coup, c'est un peu dommage, mais si on se sert uniquement de LCGs, on a même pas à coder ce test.
+
 
 Remarque : un peu bizarre de dire "grand O", non ? Pour un générateur donné, le max est fixé et r aussi, pourtant grand o est une notation asymptotique.
 On devrait dire : le max n'est pas trop grand devant r, ou un truc comme ça...
