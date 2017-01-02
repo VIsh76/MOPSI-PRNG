@@ -1,8 +1,9 @@
 Propriétés des bons MCGs : 
 On rappelle : 
 - les bonnes propriétés d'un générateur de nombres pseudo-aléatoires sont, d'une manière générale : 
-  - une distribution la plus uniforme possible sur l'ensemble des sorties possibles
-  - des réalisations les plus indépendantes possibles
+  - une distribution la plus uniforme possible sur l'ensemble des sorties possibles (même en haute dimension)
+  - des réalisations les plus indépendantes possibles (ça et l'uniformité => période élevée)
+  - et des réalisations rapides, bien sûr
 - un LCG, ou générateur de congruences linéaire en bon français, se définit par la donnée de trois entiers m>0, a>0, et c>=0. Un MCG est un LCG pour lequel c=0.
 On a alors la relation : sn = a*s(n-1) mod m, et un = sn/m
 
@@ -22,4 +23,16 @@ Choix de m,a :
 - la période m-1 est réalisable seulement si m est premier. Dans ce cas, elle divise m-1 et est égale à m-1 ssi a est une "primitive root", aka (a≠0)&&(a^((m-1)/p) n'est pas congru à 1 mod m pour tout p facteur premier de m-1)
 
 
+
+A regarder : https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_congruentiel_lin%C3%A9aire
+
+
 Mieux que les LCGs : SFMT
+SFMT = SIMD-oriented Fast Mersenne Twister : période = 10^6001, équirépartition potable et prouvable jusqu'à d=382
+=> un des plus efficaces selon wikipédia !!!
+Source : https://fr.wikipedia.org/wiki/Mersenne_Twister
+Générateur de NA par défaut sur Python, PHP, Matlab, dispo sur C++
+NB : SFMT est une variante de MT, apparemment encore plus rapide !
+Et dSFMT augmente encore la vitesse en faisant moins de conversion entier->double : il génère directement des doubles
+
+Implémentations, ou idées : si tu sais ce qu'est l'espace (Fw2)N, dis-moi. C'est aussi là qu'il y a les notations cheloues, mais à mon avis si on comprend la nature de l'espace de départ, on comprendra mieux le reste.
