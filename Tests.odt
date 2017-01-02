@@ -1,0 +1,43 @@
+Tests :  
+1) Le gap test
+Un des plus élémentaires, son objectif est de vérifier si un générateur génère des nombres qui couvrent de manière égale le support de sa mesure.
+En pratique : 
+- r = 1/card(U) où U est l'ensemble des états de sortie ; r est la résolution théorique optimale du générateur
+- on calcule (si notre mesure est µ) le max des µ(I), pour tout I de la forme ]si;sj[ disjoint de U.
+  Pour réaliser ça, une simple double boucle suffit en théorie (si on dispose bien de la liste des états)
+- test passé si le max = O(r)
+On remarque que un LCG de période maximale a une "gap value"  égale à r, ou r/(1-r) pour un MCG.
+
+En effet, d'après la définition et pour un LCG, S={0,..,m-1} et U={0,1/m,1-1/m} : card(U)=m, donc r=1/m.
+L'intervalle ]si;sj[ le plus long "obtenable" sans toucher U est ]1,m-1[ ce qui fait un max de m-1 = 1/r -1 = (1-r)/r.
+
+Pour un MCG : S={1,...,m-1} et U={1/m,...,1-1/m} : card(U)=m-1, donc r=1/(m-1) ; le max vaut toujours m-1 = 1/r
+
+J'imagine que la gap value est l'inverse du max en question, et que l'article a confondu LCG et MCG, ou alors je me suis planté...
+
+Remarque : un peu bizarre de dire "grand O", non ? Pour un générateur donné, le max est fixé et r aussi, pourtant grand o est une notation asymptotique.
+On devrait dire : le max n'est pas trop grand devant r, ou un truc comme ça...
+
+
+
+2) Le test spectral
+Son objectif est la détection de la non uniformité de U sur [0,1]^d. Utilisé entre autre à l'époque du générateur RANDU (80s).
+En pratique : 
+- calculer Vd =  min des ||alpha||2 pour les (alpha)i=O,d-1  tels que  somme des alphai * a^i ≡ 0 mod m. Noter que d appartient à [2,dmax]. 
+Pour calculer ce min (qui n'a rien d'un problème linéaire), on pourrait essayer un programme de RO. 
+Les alphai sont certainement entiers, on pourrait peut-être juste balancer quelques boucles avec des heuristiques ?
+- une fois Vd calculée, on calcule (π^(d/2)*Vd^d)/(Gamma(D/2+1)*m)
+- test réussi si cette valeur > 0.1 pour d:2,6
+=> Très efficace
+
+3) Corner test : 1D,2D,3D seulement
+Test graphique : on tire a réalisations sur [0,a]^2 (visiblement), et on observe si ça trace une grille ou non.
+
+
+Et s'il en faut plus, en voici une vingtaine d'autres : 
+https://en.wikipedia.org/wiki/Diehard_tests
+
+
+Site pratique : http://www.apprendre-en-ligne.net/random/spectre.html
+On peut tester des valeurs de m,a,c avec un PRNG déjà codé prêt à l'emploi.
+Pour coder nos PRNG, et autres : http://mleadbetter.com/how-to-use-a-pseudorandom-number-generator-a-practical-guide/
