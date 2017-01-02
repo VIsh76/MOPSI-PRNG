@@ -25,7 +25,7 @@ Choix de m,a :
 
 
 A regarder : https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_congruentiel_lin%C3%A9aire
-
+http://exploredoc.com/doc/4246522/prng-vs.-csprng
 
 Mieux que les LCGs : SFMT
 SFMT = SIMD-oriented Fast Mersenne Twister : période = 10^6001, équirépartition potable et prouvable jusqu'à d=382
