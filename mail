@@ -1,0 +1,18 @@
+
+
+
+
+
+Nous rencontrons plusieurs difficultés.
+
+- Tout d'abord nous ne voyons comment s'initialise les valeurs pour les générateurs. (sachant qu'il n'y a pas d'aléatoire et pour ne pas faire commencer tous les générateurs au même point)
+
+- La diapositive 24 nous pose quelque problèmes :
+F2/w correspond-il bien au nombre en base 2 possédant w bit ?
+Nous avons compris que xA,B,C,D renvoyaient des bits.
+Cependant les opérateur utilisés restent un mystère.
+
+- Pour les tests, nous avons programmé le gap test cependant le spectral test quels outils seraient les plus adaptés pour calculer ce minimum (4) p 19.
+Existe-il une méthode exacte ou glpk est un outil adapté ?
+
+- Nous avions parlé d

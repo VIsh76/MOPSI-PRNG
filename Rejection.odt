@@ -1,4 +1,4 @@
-Rejection with cheese : 
+﻿Rejection with cheese : 
 La méthode du rejet est utilisée quand on veut simuler une variable aléatoire X de densité f.
 Hypothèses : - on connaît une densité g telle que f/g soit borné par une constante c : f <= cg
              - et bien sûr, il faut savoir simuler g (on note Y une variable aléatoire de densité g)
@@ -15,8 +15,6 @@ Remarques : On a intérêt à choisir c le plus petit possible (le plus proche d
             Le tirage de la loi g doit être facile, l'évaluation de f/g aussi.
             Notons qu'on connaît f(Y) parce qu'on connaît f : différence entre connaître la fonction de densité et savoir la simuler (genre simuler un jet de dés ≠ savoir que chaque sortie est 1/6, la preuve l'être humain simulerait ça assez mal).
             => le choix de g est évidemment la première étape d'un rejet bien mené !
-
-
 
 Généralisation : le principe de la généralisation est de chercher à encadrer f par deux fonctions à valeurs dans (0,1) facilement évaluables h1,h2 : 
                  h1 <= f <= h2 (toujours avec f <= cg)
