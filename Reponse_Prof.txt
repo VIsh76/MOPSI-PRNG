@@ -1,0 +1,53 @@
+> Bonsoir monsieur,
+>
+> Nous avions quelques questions sur le projet.
+
+> - Tout d'abord nous ne voyons comment s'initialise les valeurs pour les générateurs. (sachant qu'il n'y a pas d'aléatoire et pour ne pas faire commencer tous les générateurs au même point)
+On les initialise de manière purement déterministe typiquement. c'est
+plus facile pour débugguer !
+
+Si vous voulez faire du calcul parallèle et générer des séquences
+indépendantes, il faut utiliser des générateurs de *vecteurs aléatoires*
+
+Ensuite, dans certaines implémentations (que je ne recommande pas
+particulièrement), on peut utiliser le timer pour initialiser
+"automatiquement".
+
+> - La diapositive 24 nous pose quelque problèmes :
+
+
+
+> F2/w correspond-il bien au nombre en base 2 possédant w bit ?
+Je ne vois pas de F2/w sur le slide 24. Ils travaillent en base
+hexadécimal, avec des nombres 0 1 ... 9 A B C D E F
+
+
+
+> Nous avons compris que xA,B,C,D renvoyaient des bits.
+> Cependant les opérateur utilisés restent un mystère.
+Il décrit les opérateurs A B C et D appliqués à x. >> et <<
+correspondent à des décélages et + à une addition, cf.
+On peut laisser tomber ça.
+
+
+
+> - Pour les tests, nous avons programmé le gap test, cependant pour le spectral test quels outils seraient les plus adaptés pour calculer ce minimum (4) p 19.
+> Existe-il une méthode simple ou glpk est un outil adapté ?
+Il s'agit de calculer la distance à des hyperplans parallèle. Pour des
+\alpha_i fixés, on peut faire ce calcule facilement du coup, non ?
+Comment sont choisis les \alpha_i ?
+
+-Non les Ai sont des var.
+
+> - Nous ignorons sur quelles fonctions complexes de dimension n, nous pourrions appliquer la méthode ziggurat.
+Vous pouvez pour le moment simplement faire un calcul pour lequel vous
+connaissez la réponse. Par exemple la moyenne de puissance d'une
+gaussienne ?
+
+
+
+> Nous souhaiterions prendre rendez-vous si possible, mardi après la journée pédagogique comme la proposé M. El Rhabi nous irait cela s'accorde-t-il avec vos disponibilités ?
+Très bien. Quand êtes-vous disponibles ? Je serai dans mon bureau tout
+mardi après-midi.
+>
+> Cordialement, Victor Marchais

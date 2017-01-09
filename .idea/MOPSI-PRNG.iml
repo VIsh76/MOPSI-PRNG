@@ -5,6 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$/LCG.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/exemple.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/LCG.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ziggurat.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ziggurat.h" isTestSource="false" />

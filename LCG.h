@@ -8,6 +8,8 @@
 #include <stdio.h>
 #include <iostream>
 #include <vector>
+#include <fstream>
+
 
 using namespace std;
 
@@ -27,12 +29,23 @@ public:
         Q = m/a;
         R = m%a;
     }
-    int run(int seed);
-    vector<int> run_n(int seed, int n);
+    int run(int& seed);
+    vector<int> run_n(int seed, int n, bool print);
     float test_uniforme(int nb_test, int seed=0);
 };
 
+//
+//    if (myfile.is_open())
+//    {
+//        cout << "heloo"<<endl;
+//        myfile << "This is a line.\n";
+//        myfile << "This is another line.\n";
+//        myfile.close();
+//    }
+//    else cout << "Unable to open file";
+//    return 0;
 
 
-
+int puis(int a,int b);
+void ecrire(vector<int> output, string name);
 #endif //PROJET_MOPSI_LCG_H

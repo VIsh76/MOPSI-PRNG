@@ -15,12 +15,11 @@ class Ziggurat{
 private:
     int dim;
     int precision;
-    int intervale;
-    vector<int> table;
+    float intervale;
+    vector<float> table;
 public:
-    Ziggurat(int dimension, int precision){
+    Ziggurat(int precision, float interval, float(*f)(float) );
 
-    };
 };
 
 
