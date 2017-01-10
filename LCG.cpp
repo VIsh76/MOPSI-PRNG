@@ -24,6 +24,14 @@ vector<int> LCG::run_n(int seed, int n, bool print) {
         cout <<endl;
     }
     return output;
+}
+
+int LCG::get_coeff() {
+    return coeff;
+}
+
+int LCG::get_mod() {
+    return mod;
 };
 
 //float LCG::test_uniforme(int nb_test, int seed=0){
@@ -48,4 +56,3 @@ void ecrire(vector<int> output, string name){
     myfile << '\n';
     myfile.close();
 }
-void make_name(int m, int seed, int n, )

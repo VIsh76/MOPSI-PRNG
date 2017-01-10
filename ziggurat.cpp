@@ -50,11 +50,29 @@ Ziggurat::Ziggurat(int C, double R, double V, double (*f)(double)) {
     }
 }
 
-//int convert_LCG_in_1_N(k_sur_m);
+int convert_LCG_Zigg(int resultat_lcg, int nb_rec, int mod){
+    return int(mod/nb_rec);
+};
 
 // dR la limite basse de f
 // mieux vaut prendre M de lcg un multiple de C;
-double F_genere_Z(Ziggurat Z, LCG lcg){
+double F_genere_Z(Ziggurat Z, LCG X, LCG U, int nb_generation){
+    int M = X.get_mod();
     int C=Z.getC();
-    A=lcg.run();
+    int seed1 = 1;
+    int seed2 =1;
+    int i = M/C;
+    float u;
+    for(int _res=0; _res < nb_generation;_res++){
+        i = convert_LCG_Zigg(X.run(seed1), C, M);
+        if(i<C){
+            u = Z.getX(i)*U.run(seed2)/M;
+        }
+        if(Z.getX(i-1)>u) {
+            cout << u << endl;
+        }
+    }
 }
+
+
+

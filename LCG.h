@@ -32,6 +32,8 @@ public:
     int run(int& seed);
     vector<int> run_n(int seed, int n, bool print);
     float test_uniforme(int nb_test, int seed=0);
+    int get_mod();
+    int get_coeff();
 };
 
 //
