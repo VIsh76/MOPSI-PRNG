@@ -24,7 +24,7 @@ private:
     vector<double> table_x;
     vector<double> table_y;
 public:
-    Ziggurat(int C, double R, double V, double (*f)(double));
+    Ziggurat(double R, double (*f)(double));
     int getC(){
         return C;
     }
@@ -34,10 +34,16 @@ public:
     double getY(int b){
         return table_y[b];
     }
+    void affiche();
 };
 
+// Pour le calcul de la ziggurat :
+double F_integrale(double (*f)(double), double x,int n);
 
 
+double f_1_gauss(double y);
+double f_gauss(double x);
 vector<int> ziggurat(LCG l, int(*pointeur)(int[dimension]));
 int funtest(int a[dimension]);
 #endif //PROJET_MOPSI_ZIGGURAT_H
+
