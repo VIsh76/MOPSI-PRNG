@@ -1,0 +1,59 @@
+
+Quelle Meilleure méthode pour simuler une Normale ?
+
+Méthode en polaire de monté carlo
+Box Muller
+-(p62)-
+Méthode standard
+
+
+
+-Box Muller
+2*log(u1) log2(u1)
+
+
+Comparé avec Ziggurat (pas de cos)
+
+
+SFMT :
+Implémentation de MT pour qu'elle soit optimale
+-------------
+MT
+
+
+
+* Fonction hyper précise dans les diapos
+
+
+
+---- ----
+
+Renault et Pascal () Implémentation hardware
+
+-----
+
+
+
+*-----------------------------------*
+How to calculate spectral test ?
+*-----------------------------------*
+
+Histogramme
+
+
+----Fouiller plus !!!!--------
+***********************************
+
+
+La fin ne peut pas être faite de manière numérique.
+ERFC utiliser.
+Approximation de la queue de la gaussienne. Wiki
+-Double quelle virgule ?
+
+
+Pourquoi faire de la dépendence entre les nombre ?
+TCL (Méthode Quasi Monté Carlo)
+Générateur Aléatoire
+
+
+

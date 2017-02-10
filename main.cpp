@@ -26,7 +26,7 @@ int main(void)
     int m = 21;
     LCG good_lcg(m,0,M);
     double (*f)(double x) = f_gauss;
-    Ziggurat(10,*f).affiche();
+    Ziggurat(100,*f).affiche();
     printf("...\n");
     return 0;
 };

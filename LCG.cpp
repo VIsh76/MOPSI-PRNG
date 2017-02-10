@@ -32,7 +32,13 @@ int LCG::get_coeff() {
 
 int LCG::get_mod() {
     return mod;
-};
+}
+
+double LCG::segment_centre(int &seed, double longueur) {
+    run(seed);
+    return (seed*longueur)/mod - longueur/2;
+}
+
 
 //float LCG::test_uniforme(int nb_test, int seed=0){
 //    vector<int> output = run_n(seed,nb_test);

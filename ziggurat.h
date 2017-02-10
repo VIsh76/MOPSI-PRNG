@@ -23,6 +23,7 @@ private:
     double volume;
     vector<double> table_x;
     vector<double> table_y;
+    double (*loi)(double);
 public:
     Ziggurat(double R, double (*f)(double));
     int getC(){
@@ -35,6 +36,9 @@ public:
         return table_y[b];
     }
     void affiche();
+    double calcul(double x){
+        return loi(x);
+    }
 };
 
 // Pour le calcul de la ziggurat :
@@ -45,5 +49,11 @@ double f_1_gauss(double y);
 double f_gauss(double x);
 vector<int> ziggurat(LCG l, int(*pointeur)(int[dimension]));
 int funtest(int a[dimension]);
+
+// GENERATION POLAIREE
+vector<double> generation_polaire(int N, LCG A, LCG B);
+vector<double > box_muller(int N, LCG A, LCG B);
+
+
 #endif //PROJET_MOPSI_ZIGGURAT_H
 

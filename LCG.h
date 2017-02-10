@@ -34,6 +34,7 @@ public:
     float test_uniforme(int nb_test, int seed=0);
     int get_mod();
     int get_coeff();
+    double segment_centre(int &seed,double longueur);
 };
 
 //
