@@ -49,11 +49,13 @@ double f_1_gauss(double y);
 double f_gauss(double x);
 vector<int> ziggurat(LCG l, int(*pointeur)(int[dimension]));
 int funtest(int a[dimension]);
+double F_genere_Z(Ziggurat Z,int nb_generation,double (*f)(double), LCG X, LCG U,int& seed1,int& seed2,int& seed3);
+
 
 // GENERATION POLAIREE
 vector<double> generation_polaire(int N, LCG A, LCG B);
-vector<double > box_muller(int N, LCG A, LCG B);
-
-
+void box_muller(LCG A, LCG B, int &seed1, int &seed2, double &norm1, double &norm2);
+vector<double> generation_polaire(int N, LCG A, LCG B);
+vector <double> genere_box(int N, LCG A, LCG B);
 #endif //PROJET_MOPSI_ZIGGURAT_H
 

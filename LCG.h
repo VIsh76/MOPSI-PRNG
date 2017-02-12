@@ -30,6 +30,7 @@ public:
         R = m%a;
     }
     int run(int& seed);
+    double run_float(int&seed);
     vector<int> run_n(int seed, int n, bool print);
     float test_uniforme(int nb_test, int seed=0);
     int get_mod();
@@ -37,7 +38,35 @@ public:
     double segment_centre(int &seed,double longueur);
 };
 
-//
+class LDS{
+private:
+    int dim;
+    vector<double> alpha;
+
+public:
+    double get_alpha(int i){return alpha[i];}
+    LDS(vector<double> a) {
+        dim = a.size();
+        for (int i = 0; i < dim; i++) {
+            alpha.push_back(a[i]);
+        }
+    }
+    void run_dim_1(double &seed, int i){
+        seed+=alpha[i];
+        if(seed >= 1){
+            seed-=1;
+        }
+    }
+    void run_dim_n(vector<double> &seedvect){
+        for(int i =0; i<seedvect.size(); i++){
+            cout << seedvect[i];
+            run_dim_1(seedvect[i], i);
+            cout << seedvect[i];
+        }
+    }
+};
+
+
 //    if (myfile.is_open())
 //    {
 //        cout << "heloo"<<endl;
@@ -51,4 +80,5 @@ public:
 
 int puis(int a,int b);
 void ecrire(vector<int> output, string name);
+void ecrire(vector<double> output, string name);
 #endif //PROJET_MOPSI_LCG_H
