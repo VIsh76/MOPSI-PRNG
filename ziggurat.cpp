@@ -82,7 +82,7 @@ Ziggurat::Ziggurat(double R, double (*f)(double)) {
 }
 
 int convert_LCG_Zigg(int resultat_lcg, int nb_rec, int mod){
-    return int((resultat_lcg*nb_rec)/mod);
+    return int(double(resultat_lcg)/mod*nb_rec);
 };
 
 // dR la limite basse de f
@@ -94,6 +94,7 @@ double F_genere_Z(Ziggurat Z,int nb_generation,double (*f)(double), LCG X, LCG U
     double y;
     for(int _res=0; _res < nb_generation;_res++){
         while(true){
+//            cout << X.run(seed1) <<endl;
             i = convert_LCG_Zigg(X.run(seed1), C, X.get_mod());
             if(i>0){
                 x = Z.getX(i-1)*U.run(seed2)/U.get_mod();
@@ -106,7 +107,7 @@ double F_genere_Z(Ziggurat Z,int nb_generation,double (*f)(double), LCG X, LCG U
                 }
             }
             else{
-                cout<<"i == 0 est" <<(i==0)<<endl;
+                cout<< i <<endl;
                 while (true){
                     x=-log(U.run_float(seed2))/Z.getX(0);
                     y=-log(U.run_float(seed3));
@@ -130,9 +131,10 @@ vector<double> generation_polaire(int N, LCG A, LCG B) {
         nb_essaie +=1;
         x=A.segment_centre(seed1,2);
         y=B.segment_centre(seed2,2);
+        cout << x << "-"<< y << endl;
         r = x*x+y*y;
         if(r<=1){
-            z = (sqrt(-4*log(r))/log(r));
+            z = (sqrt(-2*log(r))/log(r));
             v.push_back(x*z);
             v.push_back(y*z);
             n+=2;

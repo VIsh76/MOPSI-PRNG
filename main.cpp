@@ -13,7 +13,6 @@ double modulo(double x, int a){
     return x2;
 }
 
-
 void begin() {
     ofstream myfile("example.txt");
     if (myfile.is_open())
@@ -46,13 +45,10 @@ void polaire(int N){
     int m2 = 5;
     LCG other_good_lcg(m2,0,M2);
     cout << 1 <<endl;
-    vector<double> v = generation_polaire(N, good_lcg, other_good_lcg);
+    vector<double> v = genere_box(N, good_lcg, other_good_lcg);
     cout << 1 <<endl;
-    ecrire(v,"polaire.txt");
+    ecrire(v,"box.csv");
 }
-
-
-
 
 void zigutest(int N) {
     cout << 1 << endl;
@@ -68,12 +64,15 @@ void zigutest(int N) {
     int seed1 = 1;
     int seed2 = 1;
     int seed3 = 1;
+    double coef = 1/sqrt(2*pi);
     vector<double> v;
-    for (int i = 0; i < N; i++) {
-        cout<<i <<endl;
+    for (int i = 0; i < N/2; i++) {
         v.push_back(F_genere_Z(z, N, f_gauss, good_lcg, other_good_lcg, seed1, seed2, seed3));
-        //ecrire(v, "ziggurat.txt");
     }
+    for (int i = 0; i < N/2; i++) {
+        v.push_back(-F_genere_Z(z, N, f_gauss, good_lcg, other_good_lcg, seed1, seed2, seed3));
+    }
+    ecrire(v, "ziggurat.csv");
 }
 
 void lowdiscrepancy(int N){
@@ -97,10 +96,8 @@ void lowdiscrepancy(int N){
     ecrire(coord2, "low_dis_2.txt");
 }
 
-
-
 int main(void){
-    lowdiscrepancy(1000);
+    polaire(1000);
+    zigutest(1000);
     return 0;
 }
-

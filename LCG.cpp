@@ -64,20 +64,23 @@ int puis(int a, int k){
 
 void ecrire(vector<int> output, string name){
     ofstream myfile(name);
-    for(int i=0; i<output.size(); i++){
-        cout << output[i]<<endl;
-        myfile << output[i] << ";";
-    }
+    myfile << "value";
     myfile << '\n';
+    for(int i=0; i<output.size(); i++){
+        myfile << output[i];
+        myfile << '\n';
+    }
+
     myfile.close();
 }
 
 void ecrire(vector<double> output, string name){
     ofstream myfile(name);
-    for(int i=0; i<output.size(); i++){
-        cout << output[i]<<endl;
-        myfile << output[i] << ",";
-    }
+    myfile << "value";
     myfile << '\n';
+    for(int i=0; i<output.size(); i++){
+        myfile << output[i];
+        myfile << '\n';
+    }
     myfile.close();
 }
