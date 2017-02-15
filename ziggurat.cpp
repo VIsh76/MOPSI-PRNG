@@ -155,10 +155,7 @@ vector <double> genere_box(int N, LCG A, LCG B){
         v.push_back(sqrt(-2 * log(u1)) * cos(2 * pi * u2));
         v.push_back(sqrt(-2 * log(u2)) * cos(2 * pi * u1));
     }
-//    for(int i=0;i<v.size(); i++){
-//        cout << v[i] << "|" ;
-//    }
-//    cout <<endl;
+
     return v;
 }
 

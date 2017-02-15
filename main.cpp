@@ -1,6 +1,9 @@
 #include <iostream>
-#include "ziggurat.h"
+#include <climits>
 
+#include "utils.h"
+#include "ziggurat.h"
+#include "twister.h"
 // writing on a text file
 using namespace std;
 
@@ -13,28 +16,22 @@ double modulo(double x, int a){
     return x2;
 }
 
-void begin() {
-    ofstream myfile("example.txt");
-    if (myfile.is_open())
-    {
-        cout << "heloo"<<endl;
-        myfile << "This is a line.\n";
-        myfile << "This is another line.\n";
-        myfile.close();
-    }
-    else cout << "Unable to open file";
-}
-
-void ziggu()
-{
-    int n = 10000;
-    int M = puis(2,32);
+void corner_lcg(int N){
+    int M = puis(2,28);
     int m = 21;
-    LCG good_lcg(m,0,M);
-    double (*f)(double x) = f_gauss;
-    Ziggurat(100,*f).affiche();
-    printf("...\n");
-};
+    LCG corner(m,0,M);
+    int seed = 1;
+    vector<double> x;
+    vector<double> y;
+    x.push_back(seed);
+    for(int i=0; i< N; i++){
+        x.push_back(corner.run_float(seed));
+        y.push_back(x[x.size()-2]);
+    }
+    y.push_back(1);
+    ecrire_python(x,"lcg_corner_x.txt");
+    ecrire_python(y,"lcg_corner_y.txt");
+}
 
 void polaire(int N){
     cout << 1 <<endl;
@@ -47,7 +44,7 @@ void polaire(int N){
     cout << 1 <<endl;
     vector<double> v = genere_box(N, good_lcg, other_good_lcg);
     cout << 1 <<endl;
-    ecrire(v,"box.csv");
+    ecrire_r(v,"box.csv");
 }
 
 void zigutest(int N) {
@@ -72,7 +69,7 @@ void zigutest(int N) {
     for (int i = 0; i < N/2; i++) {
         v.push_back(-F_genere_Z(z, N, f_gauss, good_lcg, other_good_lcg, seed1, seed2, seed3));
     }
-    ecrire(v, "ziggurat.csv");
+    ecrire_r(v, "ziggurat.csv");
 }
 
 void lowdiscrepancy(int N){
@@ -92,12 +89,27 @@ void lowdiscrepancy(int N){
         coord1.push_back(point_actuel[0]);
         coord2.push_back(point_actuel[1]);
     }
-    ecrire(coord1, "low_dis_1.txt");
-    ecrire(coord2, "low_dis_2.txt");
+    ecrire_r(coord1, "low_dis_1.txt");
+    ecrire_r(coord2, "low_dis_2.txt");
 }
 
+
+void twisterM(int N){
+    Initialize(1);
+    vector<double> ordonne;
+    vector<double> abscisse;
+    abscisse.push_back(0);
+    for(int i=0;i<N; i++){
+        abscisse.push_back( double_t(ExtractU32())/(INT_MAX)/2);
+        ordonne.push_back(abscisse[abscisse.size()-1]);
+    }
+    ordonne.push_back(abscisse[0]);
+    ecrire_r(abscisse, "tw_x.csv");
+    ecrire_r(ordonne, "tw_y.csv");
+}
+
+
 int main(void){
-    polaire(1000);
-    zigutest(1000);
+    corner_lcg(1000);
     return 0;
 }

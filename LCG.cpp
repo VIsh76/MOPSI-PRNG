@@ -20,7 +20,6 @@ vector<int> LCG::run_n(int seed, int n, bool print) {
         output[i] = run(seed);
     }
     if(print){
-        ecrire(output, "exemple.txt");
         cout <<endl;
     }
     return output;
@@ -61,26 +60,37 @@ int puis(int a, int k){
     return res;
 }
 // Ecrire dans un doc
-
-void ecrire(vector<int> output, string name){
-    ofstream myfile(name);
-    myfile << "value";
-    myfile << '\n';
-    for(int i=0; i<output.size(); i++){
-        myfile << output[i];
-        myfile << '\n';
-    }
-
-    myfile.close();
-}
-
-void ecrire(vector<double> output, string name){
-    ofstream myfile(name);
-    myfile << "value";
-    myfile << '\n';
-    for(int i=0; i<output.size(); i++){
-        myfile << output[i];
-        myfile << '\n';
-    }
-    myfile.close();
-}
+//
+//void ecrire(vector<int> output, string name){
+//    ofstream myfile(name);
+//    myfile << "value";
+//    myfile << '\n';
+//    for(int i=0; i<output.size(); i++){
+//        myfile << output[i];
+//        myfile << '\n';
+//    }
+//
+//    myfile.close();
+//}
+//
+//void ecrire(vector<double> output, string name){
+//    ofstream myfile(name);
+//    myfile << "value";
+//    myfile << '\n';
+//    for(int i=0; i<output.size(); i++){
+//        myfile << output[i];
+//        myfile << '\n';
+//    }
+//    myfile.close();
+//}
+//
+//void ecrire(vector<uint32_t> output, string name){
+//    ofstream myfile(name);
+//    myfile << "value";
+//    myfile << '\n';
+//    for(int i=0; i<output.size(); i++){
+//        myfile << output[i];
+//        myfile << '\n';
+//    }
+//    myfile.close();
+//}

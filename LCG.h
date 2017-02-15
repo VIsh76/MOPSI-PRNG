@@ -5,6 +5,8 @@
 #ifndef PROJET_MOPSI_LCG_H
 #define PROJET_MOPSI_LCG_H
 
+
+#include <stdint.h>
 #include <stdio.h>
 #include <iostream>
 #include <vector>
@@ -78,7 +80,9 @@ public:
 //    return 0;
 
 
+
 int puis(int a,int b);
-void ecrire(vector<int> output, string name);
-void ecrire(vector<double> output, string name);
+//void ecrire(vector<int> output, string name);
+//void ecrire(vector<double> output, string name);
+//void ecrire(vector<uint32_t> output, string name);
 #endif //PROJET_MOPSI_LCG_H
