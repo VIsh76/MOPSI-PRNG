@@ -29,8 +29,8 @@ void corner_lcg(int N){
         y.push_back(x[x.size()-2]);
     }
     y.push_back(1);
-    ecrire_python(x,"lcg_corner_x.txt");
-    ecrire_python(y,"lcg_corner_y.txt");
+    ecrire_r(x,"lcg_corner_x.txt");
+    ecrire_r(y,"lcg_corner_y.txt");
 }
 
 void polaire(int N){
@@ -110,6 +110,6 @@ void twisterM(int N){
 
 
 int main(void){
-    corner_lcg(1000);
+    lowdiscrepancy(1000);
     return 0;
 }
